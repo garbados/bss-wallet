@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  coupon_value: 9.99
+  num_coupons: 
+  point_value: 
+  bid_value: 9.99
+
+two:
+  name: MyString
+  description: MyText
+  coupon_value: 9.99
+  num_coupons: 
+  point_value: 
+  bid_value: 9.99
