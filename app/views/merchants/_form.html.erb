@@ -1,0 +1,17 @@
+<%= semantic_form_for @merchant do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :store_name %>
+    <%= f.input :rep_first_name %>
+    <%= f.input :rep_last_name %>
+    <%= f.input :email %>
+    <%= f.input :address_st_1 %>
+    <%= f.input :address_st_2 %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+    <%= f.input :zip %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>
