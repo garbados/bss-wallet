@@ -8,6 +8,7 @@ gem 'rails', '3.2.8'
 gem 'sqlite3'
 gem 'formtastic'
 gem 'validates_email_format_of'
+gem 'annotate'
 
 
 # Gems used only for assets and not required
