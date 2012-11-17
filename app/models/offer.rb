@@ -1,3 +1,13 @@
 class Offer < ActiveRecord::Base
-  attr_accessible :bid_value, :coupon_value, :description, :name, :num_coupons, :point_value, :expiration_date, :coupon_expiration_date
+
+    belongs_to :merchant
+    has_many :transactions
+    validates :name, :length => { :maximum => 50 }
+    validates :description, :length => { :maximum => 140 }
+    validates :coupon_value, presence: true
+    validates :num_coupons, presence: true
+    validates :point_value, presence: true
+    validates :bid_value, presence: true
+
+
 end
