@@ -9,7 +9,7 @@ class MerchantsController < ApplicationController
   
 
 	def show
-        @merchant = Message.find(params[:id])
+        @merchant = Merchant.find(params[:id])
 
     	respond_to do |format|
       		format.html # show.html.erb
@@ -27,9 +27,9 @@ class MerchantsController < ApplicationController
 
 	def create
 		@merchant = Merchant.new
-		@merchant.store_name = params[:merchant][:first_name]
-        @merchant.rep_first_name = params[:merchant][:first_name]
-        @merchant.rep_last_name = params[:merchant][:last_name]
+		@merchant.store_name = params[:merchant][:store_name]
+        @merchant.rep_first_name = params[:merchant][:rep_first_name]
+        @merchant.rep_last_name = params[:merchant][:rep_last_name]
         @merchant.email = params[:merchant][:email]
         @merchant.address_st_1 = params[:merchant][:address_st_1]
         @merchant.address_st_2 = params[:merchant][:address_st_2]

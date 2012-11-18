@@ -5,7 +5,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <!-- <th><%= model_class.human_attribute_name(:id) %></th> -->
+      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:store_name) %></th>
       <th><%= model_class.human_attribute_name(:rep_first_name) %></th>
       <th><%= model_class.human_attribute_name(:rep_last_name) %></th>
@@ -15,7 +15,7 @@
   <tbody>
     <% @merchants.each do |merchant| %>
       <tr>
-        <!-- <td><%= link_to merchant.id, merchant_path(merchant) %></td> -->
+        <td><%= link_to merchant.id, merchant_path(merchant) %></td>
         <td><%= merchant.store_name %></td>
         <td><%= merchant.rep_first_name %></td>
         <td><%=l merchant.rep_last_name %></td>
