@@ -9,7 +9,7 @@ class MerchantsController < ApplicationController
   
 
 	def show
-        @merchant = Merchant.find(params[:id])
+      @merchant = Merchant.find(params[:id])
 
     	respond_to do |format|
       		format.html # show.html.erb
