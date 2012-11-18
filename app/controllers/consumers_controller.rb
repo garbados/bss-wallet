@@ -19,15 +19,14 @@ class ConsumerController < ApplicationController
         @consumer.email = params[:consumer][:email]
         @consumer.first_name = params[:consumer][:first_name]
         @consumer.zip = params[:consumer][:zip]
-        if @consumer.save
-            respond_with @consumer do |f|
-                f.html { redirect_to @consumer, flash: {notice: 
-                    "User created"} }
-                f.json { }
-            end
-        else
-            respond_with @user do |f|
-                f.html { render action: 'new' }
+        
+        respond_with @consumer do |f|
+            if @consumer.save
+                    f.html { redirect_to @consumer, flash: {notice: 
+                        "User created"} }
+                    f.json { }
+            else
+                 f.html { render action: 'new' }
             end
         end
     end
@@ -47,14 +46,12 @@ class ConsumerController < ApplicationController
         @consumer.first_name = params[:consumer][:first_name]
         @consumer.zip = params[:consumer][:zip]
 
-        if @consumer.save
-            respond_with @consumer do |f|
+        respond_with @user do |f|
+            if @consumer.save
                 f.html { redirect_to @consumer, flash: {notice: 
                     "User edited"} }
                 f.json { }
-            end
-        else
-            respond_with @user do |f|
+            else
                 f.html { render action: 'edit' }
             end
         end

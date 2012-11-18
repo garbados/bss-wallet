@@ -37,18 +37,14 @@ class MerchantsController < ApplicationController
         @merchant.state = params[:merchant][:state]
         @merchant.zip = params[:merchant][:zip]
        	
-       	@merchant.save
-       	redirect_to index.html.erb
-      #   if @merchant.save
-      #       respond_to do |format|
-      # 			format.html # index.html.erb
-      # 			format.json { render json: @merchant }
-    		# end
-      #   else
-      #       respond_to @merchant do |format|
-      #           format.html { render action: 'new' }
-      #       end
-      #   end
+       	respond_to do |format|
+      		if @merchant.save
+		        format.html { redirect_to @merchant, notice: 'merchant was successfully created.' }
+		        format.json { render json: @merchant, status: :created, location: @merchant }
+      		else
+		        format.html { render action: "new" }
+		        format.json { render json: @merchant.errors, status: :unprocessable_entity }
+      		end
+   		 end
 	end
-
 end
