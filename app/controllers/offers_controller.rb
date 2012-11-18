@@ -1,4 +1,4 @@
-class OffesController < ApplicationController
+class OffersController < ApplicationController
 	def index
     @offers = Offer.all
 		respond_to do |format|
