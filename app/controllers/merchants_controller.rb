@@ -1,12 +1,12 @@
 class MerchantsController < ApplicationController
 	def index
-    	@messages = Merchant.all
-
-    	respond_to do |f|
-      	f.html # index.html.erb
-      	f.json { render json: @messages }
+    	@merchants = Merchant.all
+		respond_to do |format|
+      		format.html # index.html.erb
+      		format.json { render json: @merchant }
+    	end
     end
-  end
+  
 
 	def show
         @merchant = Message.find(params[:id])
@@ -19,8 +19,12 @@ class MerchantsController < ApplicationController
 	
 	def new
 		@merchant = Merchant.new
+		respond_to do |format|
+      		format.html # index.html.erb
+      		format.json { render json: @merchant }
+    	end
 	end
-	
+
 	def create
 		@merchant = Merchant.new
 		@merchant.store_name = params[:merchant][:first_name]
@@ -32,18 +36,19 @@ class MerchantsController < ApplicationController
         @merchant.city = params[:merchant][:city]
         @merchant.state = params[:merchant][:state]
         @merchant.zip = params[:merchant][:zip]
-        @merchant.save
-        # if @merchant.save
-        #     respond_with @merchant do |f|
-        #         f.html { redirect_to @merchant, flash: {notice: 
-        #             "User created"} }
-        #         f.json { }
-        #     end
-        # else
-        #     respond_with @user do |f|
-        #         f.html { render action: 'new' }
-        #     end
-        # end
+       	
+       	@merchant.save
+       	redirect_to index.html.erb
+      #   if @merchant.save
+      #       respond_to do |format|
+      # 			format.html # index.html.erb
+      # 			format.json { render json: @merchant }
+    		# end
+      #   else
+      #       respond_to @merchant do |format|
+      #           format.html { render action: 'new' }
+      #       end
+      #   end
 	end
 
 end
