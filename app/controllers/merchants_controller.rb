@@ -19,6 +19,7 @@ class MerchantsController < ApplicationController
 	
 	def new
 		@merchant = Merchant.new
+    
 		respond_to do |format|
       		format.html # index.html.erb
       		format.json { render json: @merchant }

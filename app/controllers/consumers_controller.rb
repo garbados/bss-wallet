@@ -1,14 +1,32 @@
-class ConsumerController < ApplicationController
+class ConsumersController < ApplicationController
+
+    respond_to :js, :html
+    
     def index
-        @consumers = Consumer.all?
+        @consumers = Consumer.all
+
+        respond_to do |format|
+            format.html
+            format.json { render json: @consumer }
+        end
     end
 
     def show
         @consumer = Consumer.find(params[:id])
+
+        respond_to do |format|
+            format.html
+            format.json { render json: @consumer }
+        end
     end
 
     def new
         @consumer = Consumer.new
+
+        respond_to do |format|
+            format.html
+            format.json { render json: @consumer }
+        end
     end
 
 
@@ -22,9 +40,8 @@ class ConsumerController < ApplicationController
         
         respond_with @consumer do |f|
             if @consumer.save
-                    f.html { redirect_to @consumer, flash: {notice: 
-                        "User created"} }
-                    f.json { }
+                f.html { redirect_to @consumer, notice: "User created" }
+                f.json { render json: @consumer, status: :created, location: @consumer }
             else
                  f.html { render action: 'new' }
             end
@@ -36,10 +53,11 @@ class ConsumerController < ApplicationController
     end
 
     def edit
-
+        @consumer = Consumer.find(params[:id])
     end
 
     def update
+        @consumer = Consumer.find(params[:id])
         @consumer.first_name = params[:consumer][:first_name]
         @consumer.last_name = params[:consumer][:last_name]
         @consumer.email = params[:consumer][:email]
@@ -48,11 +66,11 @@ class ConsumerController < ApplicationController
 
         respond_with @user do |f|
             if @consumer.save
-                f.html { redirect_to @consumer, flash: {notice: 
-                    "User edited"} }
-                f.json { }
+                f.html { redirect_to @consumer, notice: "User edited" }
+                f.json { render json: @consumer, status: :created, location: @consumer }
             else
                 f.html { render action: 'edit' }
+            format.json { render json: @consumer.errors, status: :unprocessable_entity }
             end
         end
     end

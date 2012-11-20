@@ -1,6 +1,7 @@
 BssWallet::Application.routes.draw do
   resources :merchants
   resources :consumers
+  resources :offers
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
