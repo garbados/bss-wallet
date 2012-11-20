@@ -15,6 +15,10 @@ class OffersController < ApplicationController
    		format.json { render json: @offer }
     end
   end
+
+  def destroy
+    @offer.destroy
+  end
 	
 	def new
 		@offer = Offer.new
@@ -36,6 +40,31 @@ class OffersController < ApplicationController
     respond_to do |format|
       if @offer.save
         format.html { redirect_to @offer, notice: 'offer was successfully created.' }
+        format.json { render json: @offer, status: :created, location: @offer }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @offer.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def edit
+    @offer = Offer.find(params[:id])
+  end
+
+
+  def update
+    @offer = Offer.find(params[:id])
+    @offer.name = params[:offer][:name]
+    @offer.description = params[:offer][:description]
+    @offer.coupon_value = params[:offer][:coupon_value]
+    @offer.num_coupons = params[:offer][:num_coupons]
+    @offer.point_value = params[:offer][:point_value]
+    @offer.bid_value = params[:offer][:bid_value]
+
+    respond_to do |format|
+      if @offer.save
+        format.html { redirect_to @offer, notice: 'offer was successfully edited.' }
         format.json { render json: @offer, status: :created, location: @offer }
       else
         format.html { render action: "new" }

@@ -1,0 +1,17 @@
+<%= semantic_form_for @offer do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :name %>
+    <%= f.input :description, :as => :text %>
+    <%= f.input :coupon_value %>
+    <%= f.input :num_coupons %>
+    <%= f.input :point_value %>
+    <%= f.input :bid_value %>
+    <%= f.input :offer_expiration_date, :as => :datetime_select %>
+    <%= f.input :coupon_expiration_date, :as => :datetime_select %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+    <%= f.action :cancel, :as => :link %>
+  <% end %>
+<% end %>
