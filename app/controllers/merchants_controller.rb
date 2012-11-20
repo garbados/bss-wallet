@@ -1,3 +1,6 @@
+#before_filter :authenticate_user!
+
+
 class MerchantsController < ApplicationController
 	def index
     	@merchants = Merchant.all

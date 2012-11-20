@@ -1,4 +1,8 @@
 BssWallet::Application.routes.draw do
+  devise_for :merchants
+
+  devise_for :consumers
+
   resources :merchants
   resources :consumers
   resources :offers

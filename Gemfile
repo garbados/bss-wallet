@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'formtastic'
 gem 'validates_email_format_of'
 gem 'annotate'
+gem 'devise'
 
 
 # Gems used only for assets and not required
