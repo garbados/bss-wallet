@@ -18,7 +18,7 @@
         <td><%= link_to merchant.id, merchant_path(merchant) %></td>
         <td><%= merchant.store_name %></td>
         <td><%= merchant.rep_first_name %></td>
-        <td><%=l merchant.rep_last_name %></td>
+        <td><%= merchant.rep_last_name %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_merchant_path(merchant), :class => 'btn btn-mini' %>
