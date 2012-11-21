@@ -1,0 +1,16 @@
+<%= semantic_form_for @coupon do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :offer_id, :as => :select,
+                :collection => Hash[ Offer.all.map{ |offer| 
+                  [ offer.name, offer.id ]}] %>
+    <%= f.input :consumer_id, :as => :select,
+                :collection => Hash[ Consumer.all.map{ |consumer| 
+                  [ "#{consumer.first_name} #{consumer.last_name}", 
+                    consumer.id ]}] %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+    <%= f.action :cancel, :as => :link %>
+  <% end %>
+<% end %>

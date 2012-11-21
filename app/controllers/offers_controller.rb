@@ -36,7 +36,8 @@ class OffersController < ApplicationController
     @offer.num_coupons = params[:offer][:num_coupons]
     @offer.point_value = params[:offer][:point_value]
     @offer.bid_value = params[:offer][:bid_value]
-    @offer.merchant = current_user
+    @offer.merchant_id = params[:merchant_id]
+
 
     respond_to do |format|
       if @offer.save
@@ -62,6 +63,7 @@ class OffersController < ApplicationController
     @offer.num_coupons = params[:offer][:num_coupons]
     @offer.point_value = params[:offer][:point_value]
     @offer.bid_value = params[:offer][:bid_value]
+    @offer.merchant_id = params[:merchant_id]
 
     respond_to do |format|
       if @offer.save
