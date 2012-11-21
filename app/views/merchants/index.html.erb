@@ -9,6 +9,13 @@
       <th><%= model_class.human_attribute_name(:store_name) %></th>
       <th><%= model_class.human_attribute_name(:rep_first_name) %></th>
       <th><%= model_class.human_attribute_name(:rep_last_name) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:address_st_1) %></th>
+      <th><%= model_class.human_attribute_name(:address_st_2) %></th>
+      <th><%= model_class.human_attribute_name(:city) %></th>
+      <th><%= model_class.human_attribute_name(:state) %></th>
+      <th><%= model_class.human_attribute_name(:zip) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -19,6 +26,13 @@
         <td><%= merchant.store_name %></td>
         <td><%= merchant.rep_first_name %></td>
         <td><%= merchant.rep_last_name %></td>
+        <td><%= merchant.email %></td>
+        <td><%= merchant.address_st_1 %></td>
+        <td><%= merchant.address_st_2 %></td>
+        <td><%= merchant.city %></td>
+        <td><%= merchant.state %></td>
+        <td><%= merchant.zip %></td>
+        <td><%=l merchant.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_merchant_path(merchant), :class => 'btn btn-mini' %>

@@ -1,16 +1,8 @@
-<%= semantic_form_for @coupon do |f| %>
-  <%= f.inputs do %>
-    <%= f.input :offer_id, :as => :select,
-                :collection => Hash[ Offer.all.map{ |offer| 
-                  [ offer.name, offer.id ]}] %>
-    <%= f.input :consumer_id, :as => :select,
-                :collection => Hash[ Consumer.all.map{ |consumer| 
-                  [ "#{consumer.first_name} #{consumer.last_name}", 
-                    consumer.id ]}] %>
-  <% end %>
+<%= form_for @coupon, :html => { :class => 'form-horizontal' } do |f| %>
 
-  <%= f.actions do %>
-    <%= f.action :submit, :as => :input %>
-    <%= f.action :cancel, :as => :link %>
-  <% end %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                coupons_path, :class => 'btn' %>
+  </div>
 <% end %>

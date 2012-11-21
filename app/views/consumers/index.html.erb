@@ -8,6 +8,10 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:first_name) %></th>
       <th><%= model_class.human_attribute_name(:last_name) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:password) %></th>
+      <th><%= model_class.human_attribute_name(:zip) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -17,6 +21,10 @@
         <td><%= link_to consumer.id, consumer_path(consumer) %></td>
         <td><%= consumer.first_name %></td>
         <td><%= consumer.last_name %></td>
+        <td><%= consumer.email %></td>
+        <td><%= consumer.password %></td>
+        <td><%= consumer.zip %></td>
+        <td><%=l consumer.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_consumer_path(consumer), :class => 'btn btn-mini' %>

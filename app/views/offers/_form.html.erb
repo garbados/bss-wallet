@@ -1,20 +1,56 @@
-<%= semantic_form_for @offer do |f| %>
-  <%= f.inputs do %>
-    <%= f.input :name %>
-    <%= f.input :description, :as => :text %>
-    <%= f.input :coupon_value %>
-    <%= f.input :num_coupons %>
-    <%= f.input :point_value %>
-    <%= f.input :bid_value %>
-    <%= f.input :offer_expiration_date, :as => :date_select %>
-    <%= f.input :coupon_expiration_date, :as => :date_select %>
-    <%= f.input :merchant_id, :as => :select,
-                :collection => Hash[ Merchant.all.map{ |merchant| 
-                  [ merchant.store_name, merchant.id ]}] %>
-  <% end %>
+<%= form_for @offer, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :coupon_value, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :coupon_value, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :num_coupons, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :num_coupons, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :point_value, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :point_value, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :bid_value, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :bid_value, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :offer_expiration_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :offer_expiration_date, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :coupon_expiration_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :coupon_expiration_date, :class => 'date_select' %>
+    </div>
+  </div>
 
-  <%= f.actions do %>
-    <%= f.action :submit, :as => :input %>
-    <%= f.action :cancel, :as => :link %>
-  <% end %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                offers_path, :class => 'btn' %>
+  </div>
 <% end %>

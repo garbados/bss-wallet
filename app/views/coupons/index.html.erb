@@ -6,8 +6,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:merchant_id) %></th>
-      <th><%= model_class.human_attribute_name(:consumer_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -15,8 +14,7 @@
     <% @coupons.each do |coupon| %>
       <tr>
         <td><%= link_to coupon.id, coupon_path(coupon) %></td>
-        <td><%= coupon.merchant_id %></td>
-        <td><%= coupon.consumer_id %></td>
+        <td><%=l coupon.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_coupon_path(coupon), :class => 'btn btn-mini' %>

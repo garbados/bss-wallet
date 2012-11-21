@@ -1,17 +1,35 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Offer -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @offer.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @offer.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:coupon_value) %>:</strong></dt>
+  <dd><%= @offer.coupon_value %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:num_coupons) %>:</strong></dt>
+  <dd><%= @offer.num_coupons %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:point_value) %>:</strong></dt>
+  <dd><%= @offer.point_value %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:bid_value) %>:</strong></dt>
+  <dd><%= @offer.bid_value %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:offer_expiration_date) %>:</strong></dt>
+  <dd><%= @offer.offer_expiration_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:coupon_expiration_date) %>:</strong></dt>
+  <dd><%= @offer.coupon_expiration_date %></dd>
+</dl>
 
-<p>
-  <b>Offer Name</b>
-  <%= @offer.name %>
-</p>
-
-<p>
-  <b> Description </b>
-  <%=  @offer.description %>
-</p>
-
-
-
-<%= link_to 'Edit', edit_offer_path(@offer) %> |
-<%= link_to 'Back', offers_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              offers_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_offer_path(@offer), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              offer_path(@offer),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

@@ -1,20 +1,37 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Merchant -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Merchant:</b>
-  <%= @merchant.store_name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:store_name) %>:</strong></dt>
+  <dd><%= @merchant.store_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:rep_first_name) %>:</strong></dt>
+  <dd><%= @merchant.rep_first_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:rep_last_name) %>:</strong></dt>
+  <dd><%= @merchant.rep_last_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dd><%= @merchant.email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:address_st_1) %>:</strong></dt>
+  <dd><%= @merchant.address_st_1 %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:address_st_2) %>:</strong></dt>
+  <dd><%= @merchant.address_st_2 %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
+  <dd><%= @merchant.city %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:state) %>:</strong></dt>
+  <dd><%= @merchant.state %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:zip) %>:</strong></dt>
+  <dd><%= @merchant.zip %></dd>
+</dl>
 
-<p>
-  <b>Name:</b>
-  <%= @merchant.rep_first_name %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%= @merchant.city %>
-</p>
-
-
-<%= link_to 'Edit', edit_merchant_path(@merchant) %> |
-<%= link_to 'Back', merchants_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              merchants_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_merchant_path(@merchant), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              merchant_path(@merchant),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
