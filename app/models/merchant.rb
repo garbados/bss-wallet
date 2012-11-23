@@ -14,6 +14,7 @@
 #  zip            :string(255)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  password       :string(255)
 #
 
 class Merchant < ActiveRecord::Base
@@ -28,7 +29,7 @@ class Merchant < ActiveRecord::Base
 
     has_many :offers
 
-    validates_presence_of :store_name, :rep_first_name, :rep_last_name, :email, :address_st_1, :city, :state, :zip
+    validates_presence_of :store_name, :rep_first_name, :rep_last_name, :email, :address_st_1, :city, :state, :zip, :password
     validates :rep_first_name, :rep_last_name, :length => { :maximum => 50 }
     #validates :email, :email_format => {:message => "not valid"}
     validates :address_st_1, :address_st_2, :length => { :maximum => 100 }
