@@ -3,6 +3,7 @@ BssWallet::Application.routes.draw do
   devise_for :merchants do
     get "/merchants/sign_out" => "devise/sessions#destroy",
       :as => :destroy_merchant_session
+    
   end
 
   devise_for :consumers do

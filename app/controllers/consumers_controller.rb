@@ -31,12 +31,7 @@ class ConsumersController < ApplicationController
 
 
     def create
-        @consumer = Consumer.new
-        @consumer.first_name = params[:consumer][:first_name]
-        @consumer.last_name = params[:consumer][:last_name]
-        @consumer.email = params[:consumer][:email]
-        @consumer.first_name = params[:consumer][:first_name]
-        @consumer.zip = params[:consumer][:zip]
+        @consumer = Consumer.new(params[:consumer])
         
         respond_with @consumer do |f|
             if @consumer.save
@@ -58,19 +53,14 @@ class ConsumersController < ApplicationController
 
     def update
         @consumer = Consumer.find(params[:id])
-        @consumer.first_name = params[:consumer][:first_name]
-        @consumer.last_name = params[:consumer][:last_name]
-        @consumer.email = params[:consumer][:email]
-        @consumer.first_name = params[:consumer][:first_name]
-        @consumer.zip = params[:consumer][:zip]
 
         respond_with @user do |f|
-            if @consumer.save
+            if @consumer.update_attributes(params[:consumer])
                 f.html { redirect_to @consumer, notice: "User edited" }
                 f.json { render json: @consumer, status: :created, location: @consumer }
             else
                 f.html { render action: 'edit' }
-            format.json { render json: @consumer.errors, status: :unprocessable_entity }
+                f.json { render json: @consumer.errors, status: :unprocessable_entity }
             end
         end
     end

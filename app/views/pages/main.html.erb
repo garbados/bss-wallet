@@ -3,3 +3,12 @@
 <div class="hero-unit">
   <h1>Tapjoy Wallet</h1>   
 </div>
+
+<% unless consumer_signed_in? || merchant_signed_in? %>
+<div class="signups">
+  <span>
+    <%= link_to 'Merchant Registration', new_merchant_registration_path %>
+    <%= link_to 'Consumer Registration', new_consumer_registration_path %>
+  </span>
+</div>
+<% end %>
