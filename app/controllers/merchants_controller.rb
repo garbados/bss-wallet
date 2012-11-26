@@ -27,17 +27,7 @@ class MerchantsController < ApplicationController
 	end
 
   def create
-    @merchant = Merchant.new
-    @merchant.store_name = params[:merchant][:store_name]
-    @merchant.rep_first_name = params[:merchant][:rep_first_name]
-    @merchant.rep_last_name = params[:merchant][:rep_last_name]
-    @merchant.email = params[:merchant][:email]
-    @merchant.address_st_1 = params[:merchant][:address_st_1]
-    @merchant.address_st_2 = params[:merchant][:address_st_2]
-    @merchant.city = params[:merchant][:city]
-    @merchant.state = params[:merchant][:state]
-    @merchant.zip = params[:merchant][:zip]
-    @merchant.password = params[:merchant][:password]
+    @merchant = Merchant.new(params[:merchant])
         
     respond_to do |format|
       if @merchant.save
@@ -56,19 +46,9 @@ class MerchantsController < ApplicationController
 
   def update
     @merchant = Merchant.find(params[:id])
-    @merchant.store_name = params[:merchant][:store_name]
-    @merchant.rep_first_name = params[:merchant][:rep_first_name]
-    @merchant.rep_last_name = params[:merchant][:rep_last_name]
-    @merchant.email = params[:merchant][:email]
-    @merchant.address_st_1 = params[:merchant][:address_st_1]
-    @merchant.address_st_2 = params[:merchant][:address_st_2]
-    @merchant.city = params[:merchant][:city]
-    @merchant.state = params[:merchant][:state]
-    @merchant.zip = params[:merchant][:zip]
-    @merchant.password = params[:merchant][:password]
         
     respond_to do |format|
-      if @merchant.save
+      if @merchant.update_attributes(params[:merchant])
         format.html { redirect_to @merchant, notice: 'merchant was successfully updated.' }
         format.json { render json: @merchant, status: :created, location: @merchant }
       else
