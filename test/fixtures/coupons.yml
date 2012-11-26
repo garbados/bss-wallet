@@ -7,6 +7,7 @@
 #  updated_at  :datetime         not null
 #  consumer_id :integer
 #  offer_id    :integer
+#  state       :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

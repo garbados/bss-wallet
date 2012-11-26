@@ -7,6 +7,7 @@
 #  updated_at  :datetime         not null
 #  consumer_id :integer
 #  offer_id    :integer
+#  state       :integer
 #
 
 require 'test_helper'

@@ -7,14 +7,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:coupon_value) %></th>
-      <th><%= model_class.human_attribute_name(:num_coupons) %></th>
-      <th><%= model_class.human_attribute_name(:point_value) %></th>
-      <th><%= model_class.human_attribute_name(:bid_value) %></th>
-      <th><%= model_class.human_attribute_name(:offer_expiration_date) %></th>
-      <th><%= model_class.human_attribute_name(:coupon_expiration_date) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= Merchant.human_attribute_name(:store_name) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -23,14 +16,7 @@
       <tr>
         <td><%= link_to offer.id, offer_path(offer) %></td>
         <td><%= offer.name %></td>
-        <td><%= offer.description %></td>
-        <td><%= offer.coupon_value %></td>
-        <td><%= offer.num_coupons %></td>
-        <td><%= offer.point_value %></td>
-        <td><%= offer.bid_value %></td>
-        <td><%= offer.offer_expiration_date %></td>
-        <td><%= offer.coupon_expiration_date %></td>
-        <td><%=l offer.created_at %></td>
+        <td><%= link_to offer.merchant.store_name, merchant_path(offer.merchant) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_offer_path(offer), :class => 'btn btn-mini' %>

@@ -38,6 +38,7 @@ class CouponsController < ApplicationController
     @coupon = Coupon.new
     @coupon.consumer_id = params[:consumer_id]
     @coupon.offer_id = params[:offer_id]
+    @coupon.state = 0;
 
     respond_to do |format|
       if @coupon.save
@@ -71,5 +72,22 @@ class CouponsController < ApplicationController
   def update
 
   end
+
+  def redeem
+    @coupon = Coupon.find(params[:id])
+    @coupon.state = 1;
+
+     respond_to do |format|
+      if @coupon.save
+        format.html { redirect_to @coupon, notice: 'coupon was successfully edited.' }
+        format.json { render json: @coupon, status: :created, location: @coupon }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @coupon.errors, status: :unprocessable_entity }
+      end
+    end
+       
+  end
+
 
 end

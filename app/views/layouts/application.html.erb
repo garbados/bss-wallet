@@ -8,15 +8,14 @@
   <%= render 'layouts/nav_links' %>
   
   <div class="container">
+    <%= render 'shared/display_flash' %>
     <div class="row">
-      <div class="span9">
-        <%= render 'shared/display_flash' %>
-      </div>
+        <%= yield %>
+        
     </div>
   </div>
 
 
-  <%= yield %>
 
 </body>
 </html>
