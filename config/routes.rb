@@ -1,12 +1,13 @@
 BssWallet::Application.routes.draw do
-  devise_for :merchants
 
-  devise_for :consumers
 
   resources :merchants
   resources :consumers
   resources :offers
   resources :coupons
+
+  root :to => "pages#main"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
