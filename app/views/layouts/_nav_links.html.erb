@@ -13,6 +13,22 @@
           <li><%= link_to "Consumers", consumers_path  %></li>
           <li><%= link_to "Offers", offers_path  %></li>
           <li><%= link_to "Coupons", coupons_path  %></li>
+          <% if consumer_signed_in? %>
+            <li>
+            <%= link_to('Logout', destroy_consumer_session_path, :method => :delete) %>        
+            </li>
+          <% elsif merchant_signed_in? %>
+            <li>
+            <%= link_to('Logout', destroy_merchant_session_path, :method => :delete) %>        
+            </li>
+          <% else %>
+            <li>
+            <%= link_to('Consumer Login', new_consumer_session_path)  %>  
+            </li>
+            <li>
+            <%= link_to('Merchant Login', new_merchant_session_path)  %>  
+            </li>
+          <% end %>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
