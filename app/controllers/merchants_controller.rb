@@ -37,6 +37,7 @@ class MerchantsController < ApplicationController
     @merchant.city = params[:merchant][:city]
     @merchant.state = params[:merchant][:state]
     @merchant.zip = params[:merchant][:zip]
+    @merchant.password = params[:merchant][:password]
         
     respond_to do |format|
       if @merchant.save
@@ -64,6 +65,7 @@ class MerchantsController < ApplicationController
     @merchant.city = params[:merchant][:city]
     @merchant.state = params[:merchant][:state]
     @merchant.zip = params[:merchant][:zip]
+    @merchant.password = params[:merchant][:password]
         
     respond_to do |format|
       if @merchant.save

@@ -21,7 +21,8 @@ class Merchant < ActiveRecord::Base
 
     has_many :offers
 
-    validates_presence_of :store_name, :rep_first_name, :rep_last_name, :email, :address_st_1, :city, :state, :zip, :password
+    validates_presence_of :store_name, :rep_first_name, :rep_last_name, :email, :address_st_1, 
+      :city, :state, :zip, :password
     validates :rep_first_name, :rep_last_name, :length => { :maximum => 50 }
     validates :address_st_1, :address_st_2, :length => { :maximum => 100 }
     validates :zip, :numericality => true
