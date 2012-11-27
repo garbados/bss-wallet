@@ -18,7 +18,7 @@
 
 class Offer < ActiveRecord::Base
     belongs_to :merchant
-    has_many :transactions
+    has_many :coupons
 
     validates_presence_of :name, :description, :coupon_value, 
       :num_coupons, :point_value, :bid_value #, :merchant_id

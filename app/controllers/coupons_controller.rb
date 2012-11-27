@@ -24,21 +24,15 @@ class CouponsController < ApplicationController
 
   def new
     @coupon = Coupon.new
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @offer }
-    end
+    @offer = Offer.find(params[:offer_id])
 
   end
 
   def create
-    logger.debug "Entered create for coupon"
-    logger.debug "consumer id#{params[:consumer_id]}"
-    @coupon = Coupon.new
-    @coupon.consumer_id = params[:consumer_id]
-    @coupon.offer_id = params[:offer_id]
-    @coupon.state = 0;
+    @offer = Offer.find(params[:offer_id])
+    @coupon = @offer.coupons.new
+    @coupon.consumer_id = current_consumer.id
+
 
     respond_to do |format|
       if @coupon.save

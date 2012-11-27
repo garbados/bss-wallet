@@ -7,7 +7,7 @@ class ConsumersController < ApplicationController
 
         respond_to do |format|
             format.html
-            format.json { render json: @consumer }
+            format.json { render json: @consumers }
         end
     end
 

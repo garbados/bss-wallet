@@ -1,4 +1,9 @@
 class OffersController < ApplicationController
+
+  before_filter :authenticate_merchant!,
+    :except => [ :index ]
+
+
 	def index
     @offers = Offer.all
 		respond_to do |format|
@@ -36,7 +41,7 @@ class OffersController < ApplicationController
     @offer.num_coupons = params[:offer][:num_coupons]
     @offer.point_value = params[:offer][:point_value]
     @offer.bid_value = params[:offer][:bid_value]
-    @offer.merchant_id = params[:merchant_id]
+    @offer.merchant_id = current_merchant.id
 
 
     respond_to do |format|

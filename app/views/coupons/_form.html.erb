@@ -1,8 +1,8 @@
-<%= form_for @coupon, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for [ @offer, @coupon] , :html => { :class => 'form-horizontal' } do |f| %>
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= f.submit "Claim", :class => 'btn btn-primary'%>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                coupons_path, :class => 'btn' %>
+                offers_path, :class => 'btn' %>
   </div>
 <% end %>

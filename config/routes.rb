@@ -1,5 +1,9 @@
 BssWallet::Application.routes.draw do
 
+  namespace :api, defaults: {format: 'json' } do
+    resources :offers #, only: [:create, :update ]
+  end
+
   devise_for :merchants do
     get "/merchants/sign_out" => "devise/sessions#destroy",
       :as => :destroy_merchant_session
@@ -12,9 +16,11 @@ BssWallet::Application.routes.draw do
 
   resources :merchants
   resources :consumers
-  resources :offers
-  resources :coupons
+  resources :offers do
+    resources :coupons, :except => [ :index, :show ]
+  end
 
+  resources :coupons, :only => [ :index, :show ]
   root :to => "pages#main"
 
   # The priority is based upon order of creation:
