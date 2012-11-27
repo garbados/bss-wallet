@@ -17,8 +17,6 @@
         <td><%= link_to coupon.offer.name, offer_path(coupon.offer) %></td>
         <td><%= link_to "#{coupon.consumer.first_name} #{coupon.consumer.last_name}", consumer_path(coupon.consumer) %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_coupon_path(coupon), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       coupon_path(coupon),
                       :method => :delete,

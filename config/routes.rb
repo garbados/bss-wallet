@@ -1,7 +1,7 @@
 BssWallet::Application.routes.draw do
 
   namespace :api, defaults: {format: 'json' } do
-    # resources :lists, only: [:create, :update ]
+    resources :offers #, only: [:create, :update ]
   end
 
   devise_for :merchants do
@@ -17,10 +17,10 @@ BssWallet::Application.routes.draw do
   resources :merchants
   resources :consumers
   resources :offers do
-    resources :coupons, :except => :index
+    resources :coupons, :except => [ :index, :show ]
   end
 
-  resources :coupons, :only => :index
+  resources :coupons, :only => [ :index, :show ]
   root :to => "pages#main"
 
   # The priority is based upon order of creation:

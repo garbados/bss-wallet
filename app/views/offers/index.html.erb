@@ -19,7 +19,7 @@
         <td><%= link_to offer.merchant.store_name, merchant_path(offer.merchant) %></td>
         <td>
           <% if consumer_signed_in? %>
-            <%= link_to "Claim",new_offer_coupon_path( offer ),
+            <%= link_to "Claim", new_offer_coupon_path( offer ),
                         :class => 'btn btn-mini' %>
           <% end %>
           <% if merchant_signed_in? %>

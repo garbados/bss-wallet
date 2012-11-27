@@ -1,5 +1,4 @@
-<%= form_for @coupon, :html => { :class => 'form-horizontal' },
-  :url => consumers_path do |f| %>
+<%= form_for [ @offer, @coupon] , :html => { :class => 'form-horizontal' } do |f| %>
 
   <div class="form-actions">
     <%= f.submit "Claim", :class => 'btn btn-primary'%>
