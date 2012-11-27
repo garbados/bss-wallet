@@ -7,8 +7,10 @@
 <% unless consumer_signed_in? || merchant_signed_in? %>
 <div class="signups">
   <span>
-    <%= link_to 'Merchant Registration', new_merchant_registration_path %>
-    <%= link_to 'Consumer Registration', new_consumer_registration_path %>
+    <%= link_to 'Merchant Registration', new_merchant_registration_path,
+    class: "btn btn-large" %>
+    <%= link_to 'Consumer Registration', new_consumer_registration_path,
+    class: "btn btn-large" %>
   </span>
 </div>
 <% end %>

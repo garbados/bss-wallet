@@ -7,7 +7,7 @@
 #  updated_at  :datetime         not null
 #  consumer_id :integer
 #  offer_id    :integer
-#  state       :integer
+#  state       :string(255)      default("active"), not null
 #
 
 class Coupon < ActiveRecord::Base

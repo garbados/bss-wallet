@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126195943) do
+ActiveRecord::Schema.define(:version => 20121127151658) do
 
   create_table "consumers", :force => true do |t|
     t.string   "first_name"
@@ -35,11 +35,11 @@ ActiveRecord::Schema.define(:version => 20121126195943) do
   add_index "consumers", ["reset_password_token"], :name => "index_consumers_on_reset_password_token", :unique => true
 
   create_table "coupons", :force => true do |t|
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.integer  "consumer_id"
     t.integer  "offer_id"
-    t.integer  "state"
+    t.string   "state",       :default => "active", :null => false
   end
 
   create_table "merchants", :force => true do |t|
