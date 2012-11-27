@@ -1,4 +1,9 @@
 class OffersController < ApplicationController
+
+  before_filter :authenticate_merchant!,
+    :except => [ :index ]
+
+
 	def index
     @offers = Offer.all
 		respond_to do |format|

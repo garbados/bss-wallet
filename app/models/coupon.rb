@@ -19,4 +19,5 @@ class Coupon < ActiveRecord::Base
 
     validates_presence_of :offer_id, :consumer_id
 
+
 end

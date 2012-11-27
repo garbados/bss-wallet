@@ -18,19 +18,26 @@
         <td><%= offer.name %></td>
         <td><%= link_to offer.merchant.store_name, merchant_path(offer.merchant) %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_offer_path(offer), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      offer_path(offer),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+          <% if consumer_signed_in? %>
+            <%= link_to "Claim",new_offer_coupon_path( offer ),
+                        :class => 'btn btn-mini' %>
+          <% end %>
+          <% if merchant_signed_in? %>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_offer_path(offer), :class => 'btn btn-mini' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        offer_path(offer),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-mini btn-danger' %>
+          <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_offer_path,
-            :class => 'btn btn-primary' %>
+<% if merchant_signed_in? %>
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+              new_offer_path,
+              :class => 'btn btn-primary' %>
+<% end %>

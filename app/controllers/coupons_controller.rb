@@ -33,12 +33,10 @@ class CouponsController < ApplicationController
   end
 
   def create
-    logger.debug "Entered create for coupon"
-    logger.debug "consumer id#{params[:consumer_id]}"
     @coupon = Coupon.new
-    @coupon.consumer_id = params[:consumer_id]
-    @coupon.offer_id = params[:offer_id]
-    @coupon.state = 0;
+    @coupon.user_id = current_consumer.id
+    @coupon.offer_id = params[:id]
+
 
     respond_to do |format|
       if @coupon.save
