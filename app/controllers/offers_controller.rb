@@ -8,7 +8,7 @@ class OffersController < ApplicationController
     @offers = Offer.all
 		respond_to do |format|
     	format.html # index.html.erb
-    	format.json { render json: @offer }
+    	format.json { render json: @offers }
     end
   end
   
