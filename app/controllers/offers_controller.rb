@@ -1,9 +1,9 @@
 class OffersController < ApplicationController
 
-  before_filter :authenticate_merchant!
+  before_filter :authenticate_merchant!, [:except => index]
 
 
-	def index
+	def merchant_offers
     merchant_id = current_merchant.id
     @offers = Offer.offers_by_merchant(merchant_id)
 		respond_to do |format|
@@ -12,7 +12,7 @@ class OffersController < ApplicationController
     end
   end
 
-  def all_offers
+  def index
     @offers = Offer.all
     respond_to do |format|
       format.html # index.html.erb

@@ -14,6 +14,8 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  merchant_id            :integer
+#  num_views              :integer          default(0), not null
+#  num_clicks             :integer          default(0), not null
 #
 
 require 'test_helper'
