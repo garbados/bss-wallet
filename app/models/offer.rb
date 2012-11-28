@@ -13,14 +13,24 @@
 #  coupon_expiration_date :date
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  merchant_id            :integer
 #
 
 class Offer < ActiveRecord::Base
-    belongs_to :merchant
-    has_many :coupons
+  belongs_to :merchant
+  has_many :coupons
 
-    validates_presence_of :name, :description, :coupon_value, 
-      :num_coupons, :point_value, :bid_value #, :merchant_id
-    validates :name, :length => { :maximum => 50 }
-    validates :description, :length => { :maximum => 140 }
+  validates_presence_of :name, :description, :coupon_value, 
+    :num_coupons, :point_value, :bid_value #, :merchant_id
+  validates :name, :length => { :maximum => 50 }
+  validates :description, :length => { :maximum => 140 }
+
+  def increment_num_coupons
+    num_coupons -= 1
+  end
+
+  def self.active_offers
+    where("num_coupons > 0")
+  end
+
 end

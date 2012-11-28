@@ -13,6 +13,7 @@
 #  coupon_expiration_date :date
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  merchant_id            :integer
 #
 
 require 'test_helper'

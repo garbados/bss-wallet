@@ -9,8 +9,6 @@
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               coupons_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_coupon_path(@coupon), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               coupon_path(@coupon),
               :method => 'delete',

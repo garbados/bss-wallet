@@ -14,7 +14,7 @@
     <% @coupons.each do |coupon| %>
       <tr>
         <td><%= link_to coupon.id, coupon_path(coupon) %></td>
-        <td><%= link_to coupon.offer.name, offer_path(coupon.offer) %></td>
+        <td><%= coupon.offer.name %></td>
         <td><%= link_to "#{coupon.consumer.first_name} #{coupon.consumer.last_name}", consumer_path(coupon.consumer) %></td>
         <td>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
