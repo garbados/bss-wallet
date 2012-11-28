@@ -9,6 +9,8 @@ gem 'google-analytics-rails'
 gem 'formtastic'
 gem 'annotate'
 gem 'devise'
+gem 'state_machine'
+
 
 group :production do
 	gem 'pg'
