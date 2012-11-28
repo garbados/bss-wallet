@@ -8,6 +8,7 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= Merchant.human_attribute_name(:store_name) %></th>
+      <th><%= "Coupons claimed" %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -17,6 +18,7 @@
         <td><%= link_to offer.id, offer_path(offer) %></td>
         <td><%= offer.name %></td>
         <td><%= link_to offer.merchant.store_name, merchant_path(offer.merchant) %></td>
+        <td><%= offer.num_coupons_claimed %></td>
         <td>
           <% if consumer_signed_in? %>
             <%= link_to "Claim", new_offer_coupon_path( offer ),

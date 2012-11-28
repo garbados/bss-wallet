@@ -1,13 +1,5 @@
 class CouponsController < ApplicationController
-  def all_coupons
-    @coupons = Coupon.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @coupons }
-    end
-  end
-
+  
   def index
     @coupons = Coupon.coupons_by_offer_id(params[:offer_id])
 

@@ -37,4 +37,8 @@ class Offer < ActiveRecord::Base
     where("merchant_id = #{merchant_id}")
   end
 
+  def num_coupons_claimed
+    coupons.count
+  end
+
 end
