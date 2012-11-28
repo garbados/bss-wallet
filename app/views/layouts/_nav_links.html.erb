@@ -18,6 +18,8 @@
             <%= link_to('Logout', destroy_consumer_session_path, :method => :delete) %>        
             </li>
           <% elsif merchant_signed_in? %>
+            <li><%= link_to "Logged in as #{current_merchant.store_name}",
+                merchant_path(current_merchant) %> </li>
             <li>
             <%= link_to('Logout', destroy_merchant_session_path, :method => :delete) %>        
             </li>

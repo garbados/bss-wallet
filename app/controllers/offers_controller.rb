@@ -1,14 +1,22 @@
 class OffersController < ApplicationController
 
-  before_filter :authenticate_merchant!,
-    :except => [ :index ]
+  before_filter :authenticate_merchant!, [:except => :index]
 
 
-	def index
-    @offers = Offer.all
+	def merchant_offers
+    merchant_id = current_merchant.id
+    @offers = Offer.offers_by_merchant(merchant_id)
 		respond_to do |format|
     	format.html # index.html.erb
     	format.json { render json: @offers }
+    end
+  end
+
+  def index
+    @offers = Offer.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @offers }
     end
   end
   
