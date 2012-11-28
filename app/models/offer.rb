@@ -27,6 +27,11 @@ class Offer < ActiveRecord::Base
   validates :name, :length => { :maximum => 50 }
   validates :description, :length => { :maximum => 140 }
 
+  def increment_num_coupons
+    self.num_coupons -= 1
+    self.save!
+  end
+
   def self.active_offers
     where("num_coupons > 0 and offer_expiration_date <= ?", Time.now.midnight)
   end

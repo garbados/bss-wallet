@@ -1,6 +1,6 @@
 class OffersController < ApplicationController
 
-  before_filter :authenticate_merchant!, [:except => :index]
+  #before_filter :authenticate_merchant!, [:except => :index]
 
 
 	def merchant_offers
