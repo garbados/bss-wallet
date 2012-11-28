@@ -1,7 +1,7 @@
 class CouponsController < ApplicationController
-  
+
   def index
-    @coupons = Coupon.coupons_by_offer_id(params[:offer_id])
+    @coupons = Coupon.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -33,6 +33,7 @@ class CouponsController < ApplicationController
     @offer = Offer.find(params[:offer_id])
     @coupon = @offer.coupons.new
     @coupon.consumer_id = current_consumer.id
+    @offer.increment_num_coupons
 
 
     respond_to do |format|
