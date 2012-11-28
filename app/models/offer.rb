@@ -30,7 +30,7 @@ class Offer < ActiveRecord::Base
   end
 
   def self.active_offers
-    where("num_coupons > 0")
+    where("num_coupons > 0 and offer_expiration_date <= ?", Time.now.midnight)
   end
 
   def self.offers_by_merchant(merchant_id)
