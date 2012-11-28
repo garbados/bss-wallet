@@ -19,12 +19,12 @@ class Coupon < ActiveRecord::Base
 
     validates_presence_of :offer_id, :consumer_id
 
-    def self.coupons_by_consumer(consumer)
-      where("consumer_id = #{consumer.id}")
+    def self.coupons_by_consumer_id(consumer_id)
+      where("consumer_id = #{consumer_id}")
     end
 
-    def self.coupons_by_offer(offer)
-      where("offer_id = #{offer.id}")
+    def self.coupons_by_offer_id(offer_id)
+      where("offer_id = #{offer_id}")
     end
 
 
