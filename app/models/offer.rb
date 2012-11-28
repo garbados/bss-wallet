@@ -21,7 +21,7 @@ class Offer < ActiveRecord::Base
   has_many :coupons
 
   validates_presence_of :name, :description, :coupon_value, 
-    :num_coupons, :point_value, :bid_value #, :merchant_id
+    :num_coupons, :point_value, :bid_value, :merchant_id
   validates :name, :length => { :maximum => 50 }
   validates :description, :length => { :maximum => 140 }
 
@@ -31,6 +31,10 @@ class Offer < ActiveRecord::Base
 
   def self.active_offers
     where("num_coupons > 0")
+  end
+
+  def self.offers_by_merchant(merchant_id)
+    where("merchant_id = #{merchant_id}")
   end
 
 end
