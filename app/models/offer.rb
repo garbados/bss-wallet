@@ -28,7 +28,8 @@ class Offer < ActiveRecord::Base
   validates :description, :length => { :maximum => 140 }
 
   def increment_num_coupons
-    num_coupons -= 1
+    self.num_coupons -= 1
+    self.save!
   end
 
   def self.active_offers
